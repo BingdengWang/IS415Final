@@ -18,6 +18,46 @@ namespace IS415Final
 
         protected void lbPredict_Click(object sender, EventArgs e)
         {
+            if(txtG.Text == "")
+            {
+                txtG.Text = "0";
+            }
+            if (txtADJOE.Text == "")
+            {
+                txtADJOE.Text = "0";
+            }
+            if (txtEFG_O.Text == "")
+            {
+                txtEFG_O.Text = "0";
+            }
+            if (txtEFG_D.Text == "")
+            {
+                txtEFG_D.Text = "0";
+            }
+            if (txtTOR.Text == "")
+            {
+                txtTOR.Text = "0";
+            }
+            if (txtTORD.Text == "")
+            {
+                txtTORD.Text = "0";
+            }
+            if (txtORB.Text == "")
+            {
+                txtORB.Text = "0";
+            }
+            if (txtDRB.Text == "")
+            {
+                txtDRB.Text = "0";
+            }
+            if (txtFTRD.Text == "")
+            {
+                txtFTRD.Text = "0";
+            }
+            if (txtADJ_T.Text == "")
+            {
+                txtADJ_T.Text = "0";
+            }
             var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c4711fa7ccda442a800c7d38c34f8c84/services/05bd76b204dc4d0d831548bf74d747ea/execute?api-version=2.0&details=true");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
@@ -32,7 +72,7 @@ namespace IS415Final
             string prediction = results["Results"]["output1"]["value"]["Values"][0][11].ToString();
             prediction = prediction.Replace("[","").Replace("]", "").Replace("\"", "");
 
-            lblResults.Text = Convert.ToDecimal(prediction).ToString("#0.##");
+            lblResults.Text = Convert.ToDecimal(prediction).ToString("##.");
         }
     }
 }
